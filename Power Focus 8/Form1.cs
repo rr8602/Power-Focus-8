@@ -29,6 +29,13 @@ namespace Power_Focus_8
             client.MessageReceived += Client_MessageReceived;
         }
 
+        // Job Info 구독 설정
+        private async void JobInfoSubscribe()
+        {
+            string message = OpenProtocolMessage.CreateMessage(34);
+            await client.SendMessageAsync(message);
+        }
+
         private void Client_ConnectionChanged(object sender, bool isConnected)
         {
             if (InvokeRequired)
@@ -67,11 +74,11 @@ namespace Power_Focus_8
 
             switch (protocolMessage.MID)
             {
-                case 61: // 조임 결과 데이터 - MID 0061
-                    ProcessTighteningResult(protocolMessage.Data);
-                    break;
                 case 35: // job id 설정 응답 - MID 0035
                     ProcessJobIDAck(protocolMessage.Data);
+                    break;
+                case 61: // 조임 결과 데이터 - MID 0061
+                    ProcessTighteningResult(protocolMessage.Data);
                     break;
                 case 4: // 에러 메시지 - MID 0004
                     MessageBox.Show($"명령 오류가 발생했습니다: {protocolMessage.Data}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -110,6 +117,7 @@ namespace Power_Focus_8
         private async void btnConnect_Click(object sender, EventArgs e)
         {
             string ipAddress = txtIPAddress.Text.Trim();
+
             if (!int.TryParse(txtPort.Text.Trim(), out int port))
             {
                 MessageBox.Show("유효한 포트 번호를 입력하세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -135,6 +143,8 @@ namespace Power_Focus_8
                 await client.SendMessageAsync(startMessage);
                 txtTighteningLog.AppendText($"{DateTime.Now:HH:mm:ss} - 송신: {startMessage}\n");
             }
+
+            JobInfoSubscribe();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -151,6 +161,7 @@ namespace Power_Focus_8
                 return;
             }
 
+            txtJobID.Text = lblCurrentJobID.Text;
             string jobID = txtJobID.Text.Trim();
 
             if (string.IsNullOrEmpty(jobID))
