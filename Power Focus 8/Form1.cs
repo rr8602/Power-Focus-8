@@ -15,7 +15,6 @@ namespace Power_Focus_8
         private OpenProtocolClient client;
         private TighteningResult result = new TighteningResult();
 
-
         public Form1()
         {
             InitializeComponent();
@@ -91,11 +90,27 @@ namespace Power_Focus_8
             try
             {
                 // 필드 파싱
-                result.TorqueValue = data.Substring(162, 2) == "24" ? double.Parse(data.Substring(164, 6)) / 100 : 0.0; // Torque Value (Nm)
-                result.TighteningStatus = data.Substring(86, 2) == "09" ? int.Parse(data.Substring(88, 1)) : 0; // OK / NG
+                result.TorqueValue = 0.0;
+                result.SecondTorqueValue = 0.0;
+
+                if (data.Substring(162, 2) == "24")
+                {
+                    if (double.TryParse(data.Substring(164, 6), out double firstTorque))
+                    {
+                        result.TorqueValue = firstTorque / 100;
+                    }
+
+                    if (double.TryParse(data.Substring(169, 10).Trim(), out double secondTorque))
+                    {
+                        result.SecondTorqueValue = secondTorque / 100;
+                    }
+                }
+
+                result.TighteningStatus = (data.Length >= 88 + 1 && data.Substring(86, 2) == "09") ? int.Parse(data.Substring(88, 1)) : 0; // OK / NG
 
                 // UI 업데이트
-                lblTorqueValue.Text = $"{result.TorqueValue:F2} Nm";
+                double totalTorque = result.TorqueValue + result.SecondTorqueValue;
+                lblTorqueValue.Text = $"{totalTorque:F2} Nm";
 
                 bool isOK = result.TighteningStatus == 1;
                 lblTighteningStatus.Text = isOK ? "OK" : "NOK";

@@ -58,6 +58,7 @@ namespace Power_Focus_8
         public int CellId { get; set; }
         public int ChannelId { get; set; }
         public double TorqueValue { get; set; }
+        public double SecondTorqueValue { get; set; }
         public double AngleValue { get; set; }
         public int TighteningStatus { get; set; } // 0 = NOK, 1 = OK
         public DateTime Timestamp { get; set; }
