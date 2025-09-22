@@ -46,10 +46,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblTighteningStatus = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblTorqueValue = new System.Windows.Forms.Label();
+            this.lblTorqueValue1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblCurrentJobID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblTorqueValue2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBoxConnection.SuspendLayout();
             this.groupBoxJobID.SuspendLayout();
             this.groupBoxTighteningData.SuspendLayout();
@@ -189,12 +191,14 @@
             // 
             // groupBoxTighteningData
             // 
+            this.groupBoxTighteningData.Controls.Add(this.lblTorqueValue2);
+            this.groupBoxTighteningData.Controls.Add(this.label9);
             this.groupBoxTighteningData.Controls.Add(this.btnGetTighteningData);
             this.groupBoxTighteningData.Controls.Add(this.txtTighteningLog);
             this.groupBoxTighteningData.Controls.Add(this.label8);
             this.groupBoxTighteningData.Controls.Add(this.lblTighteningStatus);
             this.groupBoxTighteningData.Controls.Add(this.label7);
-            this.groupBoxTighteningData.Controls.Add(this.lblTorqueValue);
+            this.groupBoxTighteningData.Controls.Add(this.lblTorqueValue1);
             this.groupBoxTighteningData.Controls.Add(this.label5);
             this.groupBoxTighteningData.Controls.Add(this.lblCurrentJobID);
             this.groupBoxTighteningData.Controls.Add(this.label4);
@@ -257,23 +261,23 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "조임 상태";
             // 
-            // lblTorqueValue
+            // lblTorqueValue1
             // 
-            this.lblTorqueValue.AutoSize = true;
-            this.lblTorqueValue.Location = new System.Drawing.Point(89, 66);
-            this.lblTorqueValue.Name = "lblTorqueValue";
-            this.lblTorqueValue.Size = new System.Drawing.Size(15, 15);
-            this.lblTorqueValue.TabIndex = 3;
-            this.lblTorqueValue.Text = "-";
+            this.lblTorqueValue1.AutoSize = true;
+            this.lblTorqueValue1.Location = new System.Drawing.Point(89, 66);
+            this.lblTorqueValue1.Name = "lblTorqueValue1";
+            this.lblTorqueValue1.Size = new System.Drawing.Size(15, 15);
+            this.lblTorqueValue1.TabIndex = 3;
+            this.lblTorqueValue1.Text = "-";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 15);
+            this.label5.Size = new System.Drawing.Size(81, 19);
             this.label5.TabIndex = 2;
-            this.label5.Text = "토크 값";
+            this.label5.Text = "토크 값1";
             // 
             // lblCurrentJobID
             // 
@@ -292,6 +296,24 @@
             this.label4.Size = new System.Drawing.Size(48, 15);
             this.label4.TabIndex = 0;
             this.label4.Text = "Job ID";
+            // 
+            // lblTorqueValue2
+            // 
+            this.lblTorqueValue2.AutoSize = true;
+            this.lblTorqueValue2.Location = new System.Drawing.Point(237, 66);
+            this.lblTorqueValue2.Name = "lblTorqueValue2";
+            this.lblTorqueValue2.Size = new System.Drawing.Size(15, 15);
+            this.lblTorqueValue2.TabIndex = 12;
+            this.lblTorqueValue2.Text = "-";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(155, 66);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 15);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "토크 값2";
             // 
             // Form1
             // 
@@ -334,9 +356,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTighteningStatus;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblTorqueValue;
+        private System.Windows.Forms.Label lblTorqueValue1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblCurrentJobID;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTorqueValue2;
+        private System.Windows.Forms.Label label9;
     }
 }
