@@ -100,7 +100,7 @@ namespace Power_Focus_8
                         result.TorqueValue = firstTorque / 100;
                     }
 
-                    if (double.TryParse(data.Substring(169, 10).Trim(), out double secondTorque))
+                    if (double.TryParse(data.Substring(170, 10).Trim(), out double secondTorque))
                     {
                         result.SecondTorqueValue = secondTorque / 100;
                     }
