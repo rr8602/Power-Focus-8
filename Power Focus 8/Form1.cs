@@ -106,7 +106,7 @@ namespace Power_Focus_8
                     }
                 }
 
-                result.TighteningStatus = (data.Length >= 88 + 1 && data.Substring(86, 2) == "09") ? int.Parse(data.Substring(88, 1)) : 0; // OK / NG
+                result.TighteningStatus = data.Substring(86, 2) == "09" ? int.Parse(data.Substring(88, 1)) : 0; // OK / NG
 
                 // UI 업데이트
                 double totalTorque = result.TorqueValue + result.SecondTorqueValue;
